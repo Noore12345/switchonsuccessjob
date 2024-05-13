@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<section>
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <div class="error-message">{{ message }}</div>
+            {% elif message.tags == 'info' %}
+                <div class="info-message">{{ message }}</div>
+            {% elif message.tags == 'success' %}
+                <div class="success-message">{{ message }}</div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+            
+           
+            {% if request.user.is_recruiter %}
+            
+            <h1 class="display-5 fw-bold">Switch on Success</h1>
+            <h3>Recruiter Dashboard</h3>
+            <!-- Add your recruiter dashboard content here -->
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% else %}
+<div class="alert alert-warning" role="alert">
+    <b>You need to log in to view this page. <a href="{% url 'login' %}">Login here</a></b>
+</div>
+{% endif %}
+
+{% endblock content %}

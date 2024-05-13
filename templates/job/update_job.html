@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Job</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="checkbox"] {
+            margin-top: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Update Job</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" value="{{ job.title }}"><br>
+
+        <label for="salary">Salary:</label><br>
+        <input type="text" id="salary" name="salary" value="{{ job.salary }}"><br>
+
+        <label for="experience">Experience:</label><br>
+        <input type="text" id="experience" name="experience" value="{{ job.experience }}"><br>
+        
+
+        <label for="location">Location:</label><br>
+        <input type="text" id="location" name="location" value="{{ job.location }}"><br>
+
+        <label for="skills">Skills:</label><br>
+        <textarea id="skills" name="skills">{{ job.skills }}</textarea><br>
+
+        <label for="requirements">Requirements:</label><br>
+        <textarea id="requirements" name="requirements">{{ job.requirements }}</textarea><br>
+
+        <label for="responsibilities">Responsibilities:</label><br>
+        <textarea id="responsibilities" name="responsibilities">{{ job.responsibilities }}</textarea><br>
+
+        <label for="qualifications">Qualifications:</label><br>
+        <textarea id="qualifications" name="qualifications">{{ job.qualifications }}</textarea><br>
+
+        <label for="is_available">Is Available:</label>
+        <input type="checkbox" id="is_available" name="is_available" {% if job.is_available %} checked {% endif %}><br>
+
+        <input type="submit" value="Update Job">
+    </form>
+</body>
+</html>

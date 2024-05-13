@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card mx-auto" style="width: 76rem;">
+
+    <div class="card-body">
+        <h5 class="card-title mb-3">Manage Jobs</h5>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">JOB ID</th>
+                    <th scope="col">Job Title</th>
+                    <th scope="col">Location</th>
+                      <!-- Corrected parentheses -->
+                    <th scope="col">No. of Applicants</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">JOB UPDATE</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in jobs %}
+                <tr>
+                    <td>{{ job.job_id }}</td>
+                    <td>{{ job.title }}</td>
+                    <td>{{ job.location}}</td>
+                    <td>{{ job.applyjob_set.all.count }} <a href="{% url 'all_applicants' job_id=job.job_id %}"><small>View all</small></a></td>
+
+  <!-- Corrected method call -->
+                    {% if job.is_available %}
+                    <td><span class="badge bg-success">Active</span></td>
+                    {% else %}
+                    <td><span class="badge bg-warning">Not Active</span></td>
+                    {% endif %}
+                    <td><a href="{% url 'update_job' job_id=job.job_id%}">Update Job</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

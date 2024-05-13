@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header with Opacity</title>
+    <style>
+        header {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        header img {
+            position: absolute;
+            opacity: 0.4;
+            width: 100%;
+            height: 100%; 
+        }
+
+        .header-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <p style="color:black; font-size: 35px;">
+                What we love about the recruiting business is making a real 
+                difference for both candidates and clients. Every day is challenging 
+                and inspiring, connecting us with people who have a thousand 
+                different stories earned on the road to success. 
+                We believe in the power of virtual networking to achieve the 
+                performances in the stipulated time period. The common platform we 
+                create for the company and us is an advantage to both of us
+            </p>
+        </div>
+        <img class="img-1" src="https://media.istockphoto.com/id/1987101391/photo/team-of-happy-entrepreneurs-talking-on-a-meeting-in-the-office.webp?b=1&s=170667a&w=0&k=20&c=1rrzbwbNx6LZDUS8T0CKZeXr8IxgPsIg-sYlDVW7_TY=" alt="">
+        <img class="img-1" src="https://media.istockphoto.com/id/1311598658/photo/businessman-trading-online-stock-market-on-teblet-screen-digital-investment-concept.webp?b=1&s=170667a&w=0&k=20&c=F4ePFhK7r539j0_I2l1Zi01SX5ESqTvu_NtqjjOUoNQ=" alt="">
+        <img class="img-1" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGJ1c2luZXNzJTIwbWVldGluZ3xlbnwwfHwwfHx8MA%3D%3D" alt="">
+    </header>
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+
+    <title>Document</title>
+    <style>
+        :root{
+            --primaryColor: #0076de;
+            --whiteColor: #fff;
+            --greyColor: #f6f8fa;
+            --labelColor: #64b1f5;
+            --yellowColor: #ffd723;
+        }
+        
+
+        header {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        header img {
+            position: absolute;
+            opacity: 0.5;
+            width: 100%;
+            height: 100%; 
+        }
+
+        .header-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            color: white;
+            text-align: center;
+        }
+
+        footer{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            background: black;
+            color: var(--whiteColor);
+            padding: 3rem;
+            margin-top: 20px; /* Added margin to separate footer from slideshow */
+        }
+
+        .footer-wrapper{
+            display: flex;
+            flex-direction:column ;
+            padding: 0.5rem;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+        .footer-wrapper h3,
+        .footer-wrapper h4{
+            line-height: 3;
+            color: var(--yellowColor);
+        }
+
+        .footer-wrapper p{
+            max-width:400px ;
+            line-height: 1.5;
+        }
+
+        .social-media{
+            margin-top: 1rem;
+        }
+
+        .social-media a{
+            text-decoration: none;
+            color: var(--greyColor);
+            margin-right: 10px;
+        }
+
+        .footer-wrapper a{
+            text-decoration: none;
+            color: var(--greyColor);
+            line-height: 2;
+        }
+
+        .navbar-logo {
+            font-size: 1.5rem;
+            color: orange;
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+        }
+
+        .mySlides {
+            display: block;
+            width: 100%;
+        }
+
+        .slideshow-container img {
+            width: 100%;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Three columns of equal width */
+            gap: 30px;
+          
+        }
+
+        .step {
+            border: 3px solid wheat;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: black;
+            color: whitesmoke;
+            font-size: 18px; /* Increase font size for the paragraphs */
+
+            height: 100%; /* Ensuring all steps have the same height */
+        }
+        .main-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .sub-container {
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .sub-container:hover {
+            color:white;
+    background-color: lightskyblue; /* Mix of blue and orange */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Adjust the shadow as per your preference */
+    transform: translateY(-5px);
+        }
+
+        h3, p {
+            margin: 0;
+        }
+
+        h3 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .container-2 {
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .container-2:hover {
+            background-color: aqua;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transform: translateY(-7px);
+        }
+
+        h4, h5, p {
+            margin: 0;
+        }
+
+        h4 {
+            color: orange;
+            margin-bottom: 10px;
+        }
+
+        h5 {
+            color: #64b1f5;
+        }
+        .container-3 {
+            border: 2px solid #000;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+        }
+
+        .text-content {
+            flex: 1; /* Take remaining space */
+            /* Add space between text and image */
+        }
+
+        .text-content h2 {
+            color: orange;
+        }
+
+        img {
+            height: 20%; /* Preserve aspect ratio */
+            width: 40%; /* Take full width of container */
+            border-radius: 5px; /* Rounded corners for image */
+        }
+    </style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <h3 class="navbar-logo">switch <span style="font-size: 1.5rem;">O</span>n <span style="color: lightskyblue"> success</span></h3>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'job-listing' %}">JOB ASPIRANT</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">CONTACTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">LOGIN</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <p style="color:white; font-size: 30px;">
+                What we love about the recruiting business is making a real 
+                difference for both candidates and clients. Every day is challenging 
+                and inspiring, connecting us with people who have a thousand 
+                different stories earned on the road to success. 
+                We believe in the power of virtual networking to achieve the 
+                performances in the stipulated time period. The common platform we 
+                create for the company and us is an advantage to both of us
+            </p>
+            <a href="{% url 'job-listing'%}">CHECK OUT OUR LATEST JOB OPENINGS</a>
+        </div>
+        <img class="img-1" src="https://media.istockphoto.com/id/1987101391/photo/team-of-happy-entrepreneurs-talking-on-a-meeting-in-the-office.webp?b=1&s=170667a&w=0&k=20&c=1rrzbwbNx6LZDUS8T0CKZeXr8IxgPsIg-sYlDVW7_TY=" alt="">
+        <img class="img-1" src="https://media.istockphoto.com/id/1311598658/photo/businessman-trading-online-stock-market-on-teblet-screen-digital-investment-concept.webp?b=1&s=170667a&w=0&k=20&c=F4ePFhK7r539j0_I2l1Zi01SX5ESqTvu_NtqjjOUoNQ=" alt="">
+        <img class="img-1" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGJ1c2luZXNzJTIwbWVldGluZ3xlbnwwfHwwfHx8MA%3D%3D" alt="">
+       
+    </header>
+    <div class="container-3">
+        <div class="text-content">
+            <h2>Why Switch on Success</h2>
+            <p >At the core of this partnership is TRUST. We earn our clints' trust every day by starting and <br>
+                ending assignments on time. delivering the highest quality of employment service; respcting 
+                <br>the client's budget and avoiding surprises through careful planning "Switch on Success" <br>
+                  stands as a beacon in the realm of recruitment, transcending mere placement services to <br>
+                  forge enduring partnerships grounded in trust and excellence. At its core lies an unwavering <br>
+                 commitment  to reliability, punctuality, and quality. Each day, it meticulously orchestrates <br>
+                 the seamless commencement and closure of assignments, ensuring timely delivery and exceeding <br>
+                 expectations. Its hallmark is a profound respect for client budgets, crafting solutions that <br>optimize resources without compromising on efficacy.
+                </p><br><br><a href="{% url 'job-listing'%}">CHECK OUT OUR LATEST JOB OPENINGS</a>
+        </div>
+        <img src="https://img.freepik.com/free-photo/group-people-working-out-business-plan-office_1303-15779.jpg?size=626&ext=jpg&ga=GA1.1.1111223050.1707974693&semt=ais_user" alt="">
+    </div>
+     <div class="container-2">
+        <h4>Our Values</h4>
+        <h5>OBJECTIVE</h5>
+        <p>To support the organization's ability to acquire the best resource compatible with job opening. Helping clients to retain and harvest the same over the <br>
+            period and develop the best talent and skills. These are achieved by following up with the companies and the candidate periodically after joining.</p>
+        
+        <h5>INNOVATION</h5>
+        <p>We are dedicated to a spirit of resources within, so that closure are done within the time frame given by the client through our talent <br>
+            search which is connected to World digitally through our new Virtual network ... unlimited resources - unmatched reach and talent search
+        </p>
+       
+        <h5>DIVERSITY & EVOLVING</h5>
+        <p>We firmly believe, talent does not ride on gender, ethnicity or geography, the only marker it has is excellence.</p>
+        
+        <h5>EMPOWERMENT</h5>
+        <p>Every individual within our ecosystem must be empowered  to fulfill their potential. Given a right chance can prove its full potential.</p>
+        
+        <h5>QUALITY RESULTS</h5>
+        <p>Quality results because of specialized resources of virtual network in place. These are achieve by following up with process which reduces the lead <br>
+            time to close a prospective candidate at 30% faster than other companies response. 
+        </p>
+       
+        <h5>RELIABLE & COST EFFECTIVE</h5>
+        <p>Cost effective because of specialized resources. We negotiate on behalf of company (if requested to do so ) to keep the resources within HR <br>
+            budgets, so that closure are fast and cost effective for the company.
+        </p>
+      
+        <h5>ETHICS</h5>
+        <p>The highest standards of ethical practices and transparency.</p>
+     </div>
+
+     <div style="text-align: center;" >
+        <h2 style="color: orange;">OUR 7 STAGE RECRUITING PROCESS</h2>
+        <p>Switch on Success has developed and implemented a time tested recruitment strategy  <br>
+            for the identification, communication,acquisition, preparation, retention and <br>
+            placement of top industry talent
+        </p><br><a href="{% url 'job-listing'%}">CHECK OUT OUR LATEST JOB OPENINGS</a>
+     </div>
+<div class="container">
+   
+    <div class="step">
+        <h1 style="color: orange;"> STEP-1</h1>
+        <p>Switch on success team review the requirements which are received from the client</p>
+        <h1 style="color: orange;"> STEP-2</h1>
+        <p>Same is shared with our specialized dedicated team to source right candidate  for the same which include virtual
+             networking and/or Database</p>
+    </div>
+    
+    <div class="step">
+        <h1 style="color: orange;"> STEP-3</h1>
+        <p>Once selected the same is uploaded into the system and a logothem in place scrutinizing profile based on  JD shared by the clients.</p>
+        <h1 style="color: orange;"> STEP-4</h1>
+        <p>Dedicated manager will submit the filtered profile to client for  selection purpose.</p>
+    </div>
+    
+    <div class="step">
+        <h1 style="color: orange;"> STEP-5</h1>
+        <p>Client complete their selection process</p>
+        <h1 style="color: orange;"> STEP-6</h1>
+        <p>Client request any value added services which we  render <br> based on contract... results are shared in stipulated time frame.</p>
+        <h1 style="color: orange;"> STEP-7</h1>
+        <p>We raise invoice to client on successful completion and we get paid for our services.</p>
+    </div>
+</div>
+
+
+    <div class="main-container-inner" >
+        <h1 style="text-align: center; color:orange;">Scope of Services</h1>
+        <p style="text-align: center;">We have a<span style="font-weight: bold;"> different approach to service</span>. Switch On Success connects people to their <br>  dream jobs and leading companies find talent to grow their businesses. Business Solutions</p>
+    </div>
+    <div class="main-container">
+        
+        <div class="sub-container">
+            <h3>Consulting</h3>
+            <p>Customized. On time. On budget.</p>
+        </div>
+        <div class="sub-container">
+            <h3>Managed Services</h3>
+            <p>Free your staff to focus on what they do best: grow your business.</p>
+        </div>
+        <div class="sub-container">
+            <h3>Permanent Placement</h3>
+            <p>Finding the right personality in a finding</p>
+        </div>
+        <div class="sub-container">
+            <h3>Strategic Staffing</h3>
+            <p>Find the right talent, at the right time</p>
+        </div>
+        <div class="sub-container">
+            <h3>Interim Management</h3>
+            <p>Interim Management is the provision of senior executives to manage</p>
+        </div>
+        <div class="sub-container">
+            <h3>Executive Search</h3>
+            <p>Building teams that grow organizations.</p>
+        </div>
+    </div>
+    <div style="text-align: center;">
+        <h1 style="color: orange;">Business Solutions</h1>
+        <p>we have a <span style="font-weight: bold;">business solution</span> Switch on 
+            Success delivers workforce expertise and talent-related capabilities that <br>
+            companies need to unleash the power of their people. With a shared focus
+            on organizational effectiveness, individual <br>development and career 
+            management, we provide tailored solutions that help companies and 
+            individuals succeed.</p>
+    </div>
+    <div class="main-container">
+        <div class="sub-container">
+            <h3>Talent Resourcing</h3><p>Customized. On time. On budget.</p>
+        </div >
+        <div class="sub-container">
+            <h3>Talent development </h3><p>Interim Management is the provision of senior executives to manage</p>
+        </div>
+        <div class="sub-container">
+            <h3>Talent Management</h3><p> Finding the right personality in a new hire is just as important as finding</p>
+        </div>
+        <div class="sub-container">
+          <h3>Recruiting partner Solutions</h3><p>Interim Management is the provision of senior executives to manage  </p>
+        </div>
+    </div>
+<div style="text-align: center;">
+    <h1 style="color: orange;">Area of Expertise</h1>
+    <p>We bring our <span style="font-weight: bold;">diverse areas of expertise to you</span>.
+        Our internal teams are made up of industry veterans and top <br> recruiting agencies.
+        They know qualified talent when they see it, so you get the expertise you need, right when you need it.</p>
+        
+</div>
+<div class="main-container">
+    <div class="sub-container">
+        <h3>Insurance</h3><p>sales skills aren’t everything when it comes to jobs in the insurance sector.</p>
+    </p>
+    </div>
+    <div class="sub-container">
+        <h3>Technology</h3><p>Delivering top tech talent that’s ready to hit the ground running.</p>
+    </div>
+    <div class="sub-container">
+        <h3>Accounting and Finance</h3><p>Consulting and Advisory Solutions for a Changing World</p>
+    </div>
+    <div class="sub-container">
+        <h3>Global Sourcing</h3><p>Global  Sourcing is a specialist service  that has been developed to address </p>
+    </div>
+    <div class="sub-container">
+        <h3>Banking</h3> <p>The banking sector can be very competitive depending on what type of position</p>
+    </div>
+    <div class="sub-container">
+        <h3>HR, Marketing & Sales</h3><p>Providing creative solutions to grow your team</p>
+    </div class="sub-container">
+    <div class="sub-container"><h3>Financial Services</h3><p>Delivering top talent solutions in the area of Financial Services.</p></div>
+    <div class="sub-container">
+        <h3>Administration & Operations</h3><p>Delivering the right talent, at the right time, to keep your business growing.</p>
+</div>
+    </div>
+    <div style="text-align: center;">
+        <a href="{% url 'job-listing'%}">CHECK OUT OUR LATEST JOB OPENINGS</a> 
+    </div>
+    <footer >
+        <div class="footer-wrapper">
+            <h3>Switch On Success</h3>
+            <p>+91:095602 09897 <br>Email:vineet@switchonsuccess.in<br>Address: First floor, Switch On Success, 156/2, Tagore Garden, near Water Tank, New Delhi, Delhi 110027</p>
+            <div class="social-media">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div >
+                <p>Copyright@2024 Noore Nabi</p>
+            </div>
+        </div>
+        <div class="footer-wrapper">
+            <h4>Explore</h4>
+             <a href="#">Top Companies</a>
+             <a href="#">Terms of service</a>
+             <a href="#">Podcast</a>
+             <a href="#">Careers</a>
+        </div>
+        <div class="footer-wrapper">
+            <h4>About</h4>
+            <a href="#">FAQ</a>
+            <a href="#">Get Inspired</a>
+            <a href="#">Blog</a>
+        </div>
+        <div class="footer-wrapper">
+            <h4>Support</h4>
+            <a href="#">Customer Service</a>
+            <a href="#">Trust & Safety</a>
+            <a href="#">Partnership</a>
+        </div>
+        <div class="footer-wrapper">
+            <h4>Community</h4>
+            <a href="#">Community</a>
+            <a href="#">Invite a Friend</a>
+            <a href="#">Event</a>
+        </div>
+       
+    </footer>
+    <script>
+        var slideIndex = 0;
+        showSlides();
+    
+        function showSlides() {
+            var i;
+            var slides = document.querySelectorAll('header img');
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.opacity = "0"; // Hide all slides
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            slides[slideIndex - 1].style.opacity = "1"; // Show current slide
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+    </script>
+</body>
+</html>

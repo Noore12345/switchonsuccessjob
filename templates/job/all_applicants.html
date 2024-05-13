@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card mx-auto" style="width: 76rem;">
+
+    <div class="card-body">
+        <h5 class="card-title mb-3">All Applicants for {{ job.title }} Position</h5>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Applicant Name</th>
+                    <th scope="col"> Email Address</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Location</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for applicant in applicants %}
+                    <tr> 
+                        <td>{{ applicant.name }}</td>
+                        <td>{{ applicant.email }}</td>
+                        <td>{{ applicant.phone }}</td>
+                        <td>{{ applicant.location }}</td>
+                        <td>{{ applicant.timestamp }}</td>
+                        <td><button type="button" class="btn btn-danger"><a style="color: aliceblue; text-decoration: none;" href="{% url 'delete_applicant' job_id=job.job_id applicant_id=applicant.id %}">Delete</a></button></td>
+                        
+
+
+                        
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

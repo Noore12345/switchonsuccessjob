@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Django Job Listings</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome for icons -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color:lightslategray;
+    }
+    
+    .navbar-logo {
+      font-size: 1.5rem;
+      color: orange;
+    }
+
+    .container-fluid {
+      padding-top: 20px;
+    }
+
+    /* Footer styles */
+    footer {
+      background-color: #000;
+      color: #fff;
+      padding: 40px 0;
+      margin-top: 10px;
+    }
+
+    .footer-wrapper h3, .footer-wrapper h4 {
+      color: #fff;
+    }
+
+    .footer-wrapper a {
+      color: #fff;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .social-media a {
+      color: #fff;
+      margin-right: 10px;
+    }
+    footer{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: black;
+    color: var(--whiteColor);
+    padding: 3rem;
+}
+
+.footer-wrapper{
+    display: flex;
+    flex-direction:column ;
+    padding: 0.5rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.footer-wrapper h3,
+.footer-wrapper h4{
+    line-height: 3;
+    color: var(--yellowColor);
+}
+
+.footer-wrapper p{
+    max-width:400px ;
+    line-height: 1.5;
+}
+
+.social-media{
+    margin-top: 1rem;
+
+}
+
+.social-media a{
+    text-decoration: none;
+    color: var(--greyColor);
+    margin-right: 10px;
+}
+.footer-wrapper a{
+    text-decoration: none;
+    color: var(--greyColor);
+    line-height: 2;
+}
+
+.navbar-logo {
+            font-size: 1.5rem;
+            color: orange;
+      
+        }
+        :root{
+    --primaryColor: #0076de;
+    --whiteColor: #fff;
+    --greyColor: #f6f8fa;
+    --labelColor: #64b1f5;
+    --yellowColor: #ffd723;
+}
+    </style>
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <h3 class="navbar-logo">switch <span style="font-size: 1.5rem;">O</span>n <span style="color: lightskyblue"> success</span></h3>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home'%}">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'job-listing' %}">JOB ASPIRANT</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#">CONTACTS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">LOGIN</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for job in jobs %}
+    <div class="col">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ job.title }}</h5>
+                <p class="card-text"><strong>Salary:</strong> {{ job.salary }}</p>
+                <p class="card-text"><strong>Experience:</strong>{{job.experience}}</p>
+                <p class="card-text"><strong>Location:</strong> {{ job.location }}</p>
+                
+                <!-- Add more job details as needed -->
+                <a class="btn btn-primary btn-sm" href="{% url 'job-details' job.pk%}">View Details</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+<footer>
+  <div class="footer-wrapper">
+  <h3>Switch On Success</h3>
+  <p>+91:095602 09897 <br>Email:vineet@switchonsuccess.in<br>Address: First floor, Switch On Success, 156/2, Tagore Garden, near Water Tank, New Delhi, Delhi 110027</p>
+ 
+  </div>
+  <div class="footer-wrapper">
+      <h4>Explore</h4>
+       <a href="#">Top Companies</a>
+       <a href="#">Terms of service</a>
+       <a href="#">Podcast</a>
+       <a href="#">Careers</a>
+  </div>
+  <div class="footer-wrapper">
+      <h4>About</h4>
+      <a href="#">FAQ</a>
+      <a href="#">Get Inspired</a>
+      <a href="#">Blog</a>
+  </div>
+  <div class="footer-wrapper">
+      <h4>Support</h4>
+      <a href="#">Customer Service</a>
+      <a href="#">Trust & Safety</a>
+      <a href="#">Partnership</a>
+  </div>
+  <div class="footer-wrapper">
+      <h4>Community</h4>
+      <a href="#">Community</a>
+      <a href="#">Invite a Friend</a>
+      <a href="#">Event</a>
+  </div>
+ 
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
